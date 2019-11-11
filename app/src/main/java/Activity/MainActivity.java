@@ -209,6 +209,7 @@ public class MainActivity extends AppCompatActivity
                 );
                 matriceList.add(Ma);
                 adapter.notifyDataSetChanged();
+                Sauvegarde();
                 customPopup.dismiss();
             }
         });
@@ -239,6 +240,7 @@ public class MainActivity extends AppCompatActivity
                 matrice.setNom(customPopup.getN().getText().toString());
                 matriceList.set(position,matrice);
                 adapter.notifyDataSetChanged();
+                Sauvegarde();
                 customPopup.dismiss();
             }
         });

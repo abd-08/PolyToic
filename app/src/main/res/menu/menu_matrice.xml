@@ -25,6 +25,12 @@
         app:showAsAction="never"
     ></item>
 
+    <item android:id="@+id/action_afficher_resultat"
+    android:title="Quitter"
+        app:showAsAction="never"
+    ></item>
+
+
 </menu>
 
 

@@ -19,7 +19,6 @@
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:layout_below="@+id/chronometer"
-        android:longClickable="true"
         android:numColumns="3" ></GridView>
 
     <Button
@@ -77,6 +76,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:clickable="true"
+        android:onClick="showPopup"
         android:orientation="vertical"
         >
         <ImageView

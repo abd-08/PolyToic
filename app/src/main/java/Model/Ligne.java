@@ -65,4 +65,12 @@ public class Ligne {
 
         }
     }
+
+
+    public boolean Compare(Ligne l){
+        for (int i = 0 ;i<ligne.size();i++){
+            if (l.getCellule(i).isSelected() != this.getCellule(i).isSelected()) return  false;
+        }
+        return true;
+    }
 }

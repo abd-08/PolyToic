@@ -270,21 +270,13 @@ public class MyJSONFile {
 
 
 
-    public Matrice getMatrice(int position) {
+    public Matrice getMatrice(int position) throws JSONException {
         JSONArray JA=_mydatas;
-        Matrice matrice=new Matrice("test null",2,2);;
+        Matrice matrice;
 
-        JSONObject jo = null;
-        try {
-            jo = new JSONObject(JA.getJSONObject(position).toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            matrice=getMatrice(jo);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject jo;
+        jo = new JSONObject(JA.getJSONObject(position).toString());
+        matrice=getMatrice(jo);
 
         return matrice;
 

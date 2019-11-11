@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_margin="80dp"
+        android:gravity="center"
+        android:text="RESULTAT DU TEST "
+        android:textSize="30dp"/>
+
+
+
+
+    <TextView
+        android:id="@+id/resultat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:textSize="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="10/10"/>
+
+    <TextView
+        android:id="@+id/resultat_afficher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resultat_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_centerVertical="true"
+        android:clickable="true"
+        android:text="Afficher la grille"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+</RelativeLayout>

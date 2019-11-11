@@ -1,10 +1,14 @@
 package Model;
 
+import android.graphics.Color;
+import android.graphics.ColorSpace;
+
 import static java.lang.Math.sqrt;
 
 public class Cellule {
     public boolean selected;
     public float x,y;
+    public ColorSpace couleur ;
 
 
     public Cellule(float x,float y) {
@@ -39,11 +43,19 @@ public class Cellule {
 
 
     public void Clicked(){
-        if (this.selected) this.selected=false;
-        else this.selected=true;
+        if (isSelected()) deselect();
+        else select();
+    }
+
+    public void select(){
+        this.selected=true;
     }
 
     public void deselect(){
         this.selected=false;
+    }
+
+    public void setCouleur(ColorSpace couleur) {
+        this.couleur = couleur;
     }
 }

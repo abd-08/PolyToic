@@ -38,4 +38,14 @@ public class Other {
         }
         return list;
     }
+
+
+
+    public static int resultat( Matrice m , Matrice m2){
+        int res=0;
+        for (int i =0 ;i<m.getLigne();i++){
+            if (m2.getLignePosition(i).Compare(m.getLignePosition(i))) res++;
+        }
+        return res;
+    }
 }

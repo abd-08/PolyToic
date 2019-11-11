@@ -73,6 +73,7 @@ public class CelluleItemAdapter extends BaseAdapter {
         else textView.setBackgroundColor(Color.argb(255, 155, 155, 155));
 
 
+
         return convertView;
     }
 

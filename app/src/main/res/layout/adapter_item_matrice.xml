@@ -9,15 +9,16 @@
 
     <ImageView
         android:id="@+id/item_icon"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:src="@drawable/ic_launcher_background"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/icon_matrice"
+         />
 
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         >
 
         <TextView
@@ -25,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="nom"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@color/colorPrimary"
             android:textSize="20dp" />
 
@@ -33,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="dimension"
+            android:layout_gravity="center"
             android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             android:layout_below="@id/item_name"
