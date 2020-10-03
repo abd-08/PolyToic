@@ -1,51 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_margin="80dp"
-        android:gravity="center"
-        android:text="RESULTAT DU TEST "
-        android:textSize="30dp"/>
-
-
-
-
-    <TextView
-        android:id="@+id/resultat_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:textSize="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="@android:color/holo_red_dark"
-        android:text="10/10"/>
-
-    <TextView
-        android:id="@+id/resultat_afficher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/resultat_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_centerVertical="true"
-        android:clickable="true"
-        android:text="Afficher la grille"/>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/fermer_resultat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
 
-</RelativeLayout>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+android:gravity="center"
+android:text="RESULTAT DU TEST "
+android:textSize="30dp"/>
+
+
+<TextView
+android:id="@+id/recompense_text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="FELICITAION"
+    android:layout_gravity="center_horizontal"/>
+
+<TextView
+android:id="@+id/resultat_text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="80dp"
+android:layout_gravity="center_horizontal"
+android:textColor="@android:color/holo_red_dark"
+android:text="10/10"/>
+
+
+
+    <RelativeLayout
+        android:id="@+id/bloc_resultat_reading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/titre_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reading"
+            />
+        <TextView
+            android:id="@+id/resultat_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/titre_reading"
+            android:text="20/20"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:id="@+id/bloc_resultat_listening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/titre_listening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Listening"
+            />
+        <TextView
+            android:id="@+id/resultat_listening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/titre_listening"
+            android:text="20/20"/>
+    </RelativeLayout>
+
+
+<ImageView
+android:id="@+id/recommencer_resultat"
+android:layout_width="50dp"
+android:layout_height="50dp"
+android:layout_gravity="center_horizontal"
+android:clickable="true"
+android:text="Afficher la correction"
+android:src="@drawable/restart_icon" />
+
+
+
+</LinearLayout>

@@ -81,7 +81,7 @@ public class CustomPopupAjouter extends Dialog {
         this.annuler=findViewById(R.id.popup_btn_annuler);
         this.n=findViewById(R.id.popup_nom_matrice);
         this.l= findViewById(R.id.popup_ligne);
-        this.c=findViewById(R.id.popup_colonne);
+       // this.c=findViewById(R.id.popup_colonne);
 
         //recuperer les données de la matrice
         this.nom=this.n.getText().toString();

@@ -2,7 +2,7 @@ package Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -17,30 +17,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import com.example.polytoic.R;
-
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
-
-import Activity.MatriceActivity;
-import Helper.MyJSONFile;
-import Model.Matrice;
-import Popup.CustomPopupAjouter;
+import Helper.MySave;
+import Model.Mode;
+import Model.Questionnaire;
 import Popup.CustomPopupModifier;
-import adapter.MatriceItemAdapter;
+import Popup.PopupAjouterQuestionnaire;
+import adapter.QuestionnaireAdapter;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
     GridView mainGridView;
-    ArrayList<Matrice> matriceList;
-    MatriceItemAdapter adapter;
-    MyJSONFile myJSONFile;
+    Mode mode;
+    ArrayList<Questionnaire> questionnaire_list;
+    QuestionnaireAdapter adapter_q;
+    MySave mySave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
+        ImageButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,28 +65,26 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        Bundle extras = getIntent().getExtras();
+        assert extras != null;
+        this.mode = new Mode(extras.getInt("mode"));
 
         //Json charger
-        myJSONFile = new MyJSONFile(this);
-        try {
-            this.matriceList = myJSONFile.getListeMatrices();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
+        mySave = new MySave(this);
+        questionnaire_list = mySave.getListeQuestionnaire(this.mode.getMODE());
 
         //grid view
         this.mainGridView = findViewById(R.id.mainGridView);
-        this.adapter=new MatriceItemAdapter(this,matriceList);
-        this.mainGridView.setAdapter(this.adapter);
+        adapter_q = new QuestionnaireAdapter(this,questionnaire_list);
+        this.mainGridView.setAdapter(this.adapter_q);
         registerForContextMenu(this.mainGridView);
 
         //start activity
         this.mainGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), MatriceActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ExamenActivity.class);
                 intent.putExtra("position", position);
+                intent.putExtra("mode", mode.getTHE_MODE());
                 startActivity(intent);
             }
         });
@@ -97,7 +93,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Ajouter();
-                Sauvegarde();
+
             }
         });
 
@@ -137,7 +133,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -173,20 +169,19 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        final Matrice modifi = matriceList.get(info.position);
+        final Questionnaire modifi = questionnaire_list.get(info.position);
 
         switch(item.getItemId()){
 
             case R.id.supprimer_matrice:
-                matriceList.remove(info.position);
-                this.adapter.notifyDataSetChanged();
-                Sauvegarde();
+                questionnaire_list.remove(info.position);
+                adapter_q.notifyDataSetChanged();
+                mySave.remove(mode.getMODE(),info.position);
                 return true;
 
             case R.id.modifier_matrice:
                 //on modifie notre matrice
                 Modifier(modifi,info.position);
-                Sauvegarde();
                 return true;
 
             default:
@@ -198,18 +193,22 @@ public class MainActivity extends AppCompatActivity
 
 
     public void Ajouter(){
-        final CustomPopupAjouter customPopup= new CustomPopupAjouter(this);
+        final Mode mode = this.mode ;
+        final PopupAjouterQuestionnaire customPopup= new PopupAjouterQuestionnaire(this , mode);
 
         customPopup.getValider().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Matrice Ma=new Matrice(customPopup.getN().getText().toString(),
-                        Integer.parseInt(customPopup.getL().getText().toString()),
-                        Integer.parseInt(customPopup.getC().getText().toString())
-                );
-                matriceList.add(Ma);
-                adapter.notifyDataSetChanged();
-                Sauvegarde();
+                Questionnaire q;
+                if (mode.equalMode(Mode.EXAMEN)){
+                    q= new Questionnaire(customPopup.getN().getText().toString());
+                }
+                else{
+                    q=new Questionnaire(customPopup.getN().getText().toString(),
+                            Integer.parseInt(customPopup.getLigne().getText().toString()));}
+                questionnaire_list.add(q);
+                adapter_q.notifyDataSetChanged();
+                mySave.ajouter(mode.getMODE() , q.transformer());
                 customPopup.dismiss();
             }
         });
@@ -223,24 +222,23 @@ public class MainActivity extends AppCompatActivity
         customPopup.build();
     }
 
-    public void Modifier(final Matrice matrice , final int position){
+    public void Modifier(final Questionnaire questionnaire , final int position){
         //popup customiser modifier
-        final CustomPopupModifier customPopup= new CustomPopupModifier(this);
+        final CustomPopupModifier customPopup= new CustomPopupModifier(this , questionnaire);
         //injection des valeurs ligne et colonne dans les editText
-        customPopup.setNom(matrice.getNom());
-        customPopup.setLigne(matrice.getLigne());
-        customPopup.setColonne(matrice.getColonne());
+        customPopup.setNom(questionnaire.getNom());
+        customPopup.setLigne(questionnaire.size());
 
         customPopup.getValider().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                matrice.modifier(Integer.parseInt(customPopup.getL().getText().toString()),
-                        Integer.parseInt(customPopup.getC().getText().toString()));
-                matrice.setNom(customPopup.getN().getText().toString());
-                matriceList.set(position,matrice);
-                adapter.notifyDataSetChanged();
-                Sauvegarde();
+                questionnaire.modifier(customPopup.getN().getText().toString(),
+                        Integer.parseInt(customPopup.getL().getText().toString()));
+
+                questionnaire_list.set(position,questionnaire);
+                adapter_q.notifyDataSetChanged();
+                mySave.update(mode.getMODE(),position,questionnaire.transformer());
                 customPopup.dismiss();
             }
         });
@@ -256,14 +254,6 @@ public class MainActivity extends AppCompatActivity
         customPopup.build();
     }
 
-    public void Sauvegarde(){
-        //sauvegarde des donnée
-        myJSONFile.setMydatas(myJSONFile.Transforme(matriceList));
-        try {
-            myJSONFile.saveData(myJSONFile.getMydatas());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
 }

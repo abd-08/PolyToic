@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity=""
@@ -12,9 +10,8 @@
         android:id="@+id/popup_ajouter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_margin="80dp"
-        android:text="Nouvelle matrice "
+        android:layout_margin="70dp"
+        android:text="New Questionnaire "
         android:textSize="30dp"/>
 
     <EditText
@@ -23,15 +20,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:layout_marginLeft="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/popup_ajouter"
         android:text=""
         android:hint="nom" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        >
 
         <EditText
             android:id="@+id/popup_ligne"
@@ -39,43 +33,30 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:layout_marginLeft="30dp"
-            android:hint="ligne"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/popup_nom_matrice"
+            android:text=""
+            android:hint="taille"
             />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:textSize="20dp"
-            android:text="*"/>
 
 
-        <EditText
-            android:id="@+id/popup_colonne"
-            android:layout_width="69dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:hint="colonne"
-            android:layout_marginLeft="30dp"/>
 
-    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity=""
-        android:layout_margin="40dp">
-
-
+        android:layout_below="@id/popup_ligne"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/popup_btn_annuler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-
+            android:layout_below="@id/popup_ligne"
             android:text="annuler"
             />
 
@@ -83,9 +64,21 @@
             android:id="@+id/popup_btn_valider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/popup_ligne"
+            android:layout_toRightOf="@id/popup_btn_annuler"
             android:text="valider"
+
             />
     </LinearLayout>
 
-</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"></LinearLayout>
+
+
+
+</RelativeLayout>

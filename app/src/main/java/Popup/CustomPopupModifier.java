@@ -2,11 +2,16 @@ package Popup;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.support.transition.Visibility;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.polytoic.R;
+
+import Model.Mode;
+import Model.Questionnaire;
 
 public class CustomPopupModifier extends Dialog {
 
@@ -15,11 +20,12 @@ public class CustomPopupModifier extends Dialog {
 
     private String nom;
     private int ligne;
-    private int colonne;
+    private Questionnaire questionnaire;
+
 
     private EditText n;
     private EditText l;
-    private EditText c;
+
 
 
     public String getNom() {
@@ -30,9 +36,6 @@ public class CustomPopupModifier extends Dialog {
         return ligne;
     }
 
-    public int getColonne() {
-        return colonne;
-    }
 
     public EditText getN() {
         return n;
@@ -42,9 +45,6 @@ public class CustomPopupModifier extends Dialog {
         return l;
     }
 
-    public EditText getC() {
-        return c;
-    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -56,11 +56,6 @@ public class CustomPopupModifier extends Dialog {
         this.l.setText(String.valueOf(ligne).toString());
     }
 
-    public void setColonne(int colonne) {
-        this.colonne = colonne;
-        this.c.setText(String.valueOf(colonne).toString());
-
-    }
 
     public void setN(EditText n) {
         this.n = n;
@@ -70,11 +65,7 @@ public class CustomPopupModifier extends Dialog {
         this.l = l;
     }
 
-    public void setC(EditText c) {
-        this.c = c;
-    }
-
-    public CustomPopupModifier(Activity activity){
+    public CustomPopupModifier(Activity activity , Questionnaire questionnaire){
         super(activity,R.style.Theme_AppCompat_DayNight_Dialog);
         setContentView(R.layout.popup_modifier);
 
@@ -82,13 +73,19 @@ public class CustomPopupModifier extends Dialog {
         this.annuler=findViewById(R.id.popup_btn_annuler_modifier);
         this.n=findViewById(R.id.popup_nom_matrice_modifier);
         this.l= findViewById(R.id.popup_ligne_modifier);
-        this.c=findViewById(R.id.popup_colonne_modifier);
 
-
+        this.questionnaire = questionnaire;
+        if (this.questionnaire.getType() == Mode.EXAMEN){
+            l.setVisibility(View.INVISIBLE);
+        }
     }
 
     public Button getValider(){
-        return valider;
+               return valider;
+    }
+
+    public Questionnaire getQuestionnaire() {
+        return questionnaire;
     }
 
     public Button getAnnuler(){

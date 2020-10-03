@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/retour_test"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/retour"
+        />
+
+    <Button
+        android:id="@+id/terminer_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_dark"
+        android:layout_centerHorizontal="true"
+        android:text="Commencer" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        >
+        <ImageButton
+            android:id="@+id/matrice_pause"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_media_pause"
+            android:background="@android:drawable/ic_media_pause"
+            android:visibility="visible"
+            />
+
+        <ImageButton
+            android:id="@+id/matrice_resume"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:src="@android:drawable/ic_media_play"
+            android:background="@android:drawable/ic_media_play"
+            android:visibility="invisible"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trier par"
+        android:textSize="22dp"/>
+    <RadioGroup
+        android:id="@+id/radio_croissant_decroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    <RadioButton
+        android:id="@+id/radio_croissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="croissant"/>
+    <RadioButton
+        android:id="@+id/radio_decroissant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="decroissant"/>
+
+    </RadioGroup>
+
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:background="@color/grey_background"></View>
+
+    <RadioGroup
+        android:id="@+id/radio_tri_par"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+    <RadioButton
+        android:id="@+id/radio_nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nom"/>
+
+
+
+    <RadioButton
+        android:id="@+id/radio_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="type examen"/>
+
+        <RadioButton
+        android:id="@+id/radio_etat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="etat exament"/>
+        <RadioButton
+        android:id="@+id/radio_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="score"/>
+        <RadioButton
+        android:id="@+id/radio_dernier_modif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dernier modification"/>
+
+    </RadioGroup>
+
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="2dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:background="@color/grey_background"></View>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filtrer par"
+        android:textSize="22dp"/>
+    <RadioGroup
+        android:id="@+id/radio_filtrer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/radio_filtre_aucun"
+            android:layout_width="82dp"
+            android:layout_height="wrap_content"
+            android:text="aucun" />
+
+
+
+    <RadioButton
+        android:id="@+id/radio_filtre_examen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="examen"/>
+
+        <RadioButton
+        android:id="@+id/radio_filtre_entrainement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="entrainement"/>
+        <RadioButton
+        android:id="@+id/radio_filtre_en_cours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="en cours"/>
+        <RadioButton
+        android:id="@+id/radio_filtre_termine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="termine"/>
+        <RadioButton
+        android:id="@+id/radio_filtre_debut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="non commencer"/>
+
+    </RadioGroup>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="appliquer"/>
+        <Button
+            android:id="@+id/radio_valide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="valider"/>
+    </LinearLayout>
+</LinearLayout>

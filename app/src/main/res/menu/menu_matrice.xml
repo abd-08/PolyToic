@@ -2,12 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<item
-    android:id="@+id/action_paramètre"
-    android:title="paramètre"></item>
 
     <item android:id="@+id/action_modifier"
-    android:title="modifier"
+    android:title="Modifier"
         app:showAsAction="never"
     ></item>
 
@@ -17,18 +14,36 @@
     ></item>
 
     <item android:id="@+id/action_correction"
-    android:title="Corriger"
+        android:title="Corriger"
         app:showAsAction="never"
-    ></item>
+        ></item>
+    <item android:id="@+id/action_affiche_correction"
+        android:title="Afficher correction"
+        app:showAsAction="never"
+        ></item>
+
+
+    <item android:id="@+id/action_afficher_resultat"
+        android:title="Afficher resultat"
+        app:showAsAction="never"
+        ></item>
+
+    <item
+        android:id="@+id/action_historique_exam"
+        android:title="historique"
+        app:showAsAction="never">
+
+    </item>
+
+    <item
+        android:id="@+id/action_paramètre"
+        android:title="paramètre"></item>
+
     <item android:id="@+id/action_quitter"
     android:title="Quitter"
         app:showAsAction="never"
     ></item>
 
-    <item android:id="@+id/action_afficher_resultat"
-    android:title="Quitter"
-        app:showAsAction="never"
-    ></item>
 
 
 </menu>

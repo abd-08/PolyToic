@@ -20,12 +20,12 @@ public class SlashScreenActivity extends Activity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(),AcceuilActivity.class);
                 startActivity(intent);
                 finish();
             }
         };
 
-        new Handler().postDelayed(runnable,300);
+        new Handler().postDelayed(runnable,30);
     }
 }

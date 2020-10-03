@@ -36,7 +36,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@By S. Mathurin  "
+            android:text="By S. Mathurin"
             android:layout_gravity="center"
             android:layout_centerInParent="true"
             android:layout_centerVertical="true"/>

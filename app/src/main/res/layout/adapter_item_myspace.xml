@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nom_du_test"
+        android:paddingLeft="10dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="nom "/>
+    <TextView
+        android:id="@+id/score_du_test"
+        android:layout_width="50dp"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content"
+        android:text="score" />
+   <TextView
+        android:id="@+id/type_du_test"
+       android:paddingLeft="10dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="type"/>
+
+    <TextView
+        android:id="@+id/etat_du_test"
+        android:paddingLeft="10dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="etat"/>
+
+    <TextView
+        android:id="@+id/dernier_modification_du_test"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="modification"/>
+
+</LinearLayout>
